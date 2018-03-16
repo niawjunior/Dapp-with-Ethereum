@@ -6,9 +6,46 @@ if (typeof web3 !== 'undefined') {
 
 web3.eth.defaultAccount = web3.eth.accounts[0];
 
-var EthereumContract = web3.eth.contract([{"constant":false,"inputs":[{"name":"_fName","type":"string"},{"name":"_age","type":"uint256"}],"name":"setInstructor","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"getInstructor","outputs":[{"name":"","type":"string"},{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}]);
+var EthereumContract = web3.eth.contract([
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getInstructor",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_fName",
+				"type": "string"
+			},
+			{
+				"name": "_age",
+				"type": "uint256"
+			}
+		],
+		"name": "setInstructor",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+]);
 
-var ethereum = EthereumContract.at('0xc3b1a5064c55e6cfbe548918e95afa04b1378db0');
+var ethereum = EthereumContract.at('0xe46267fab3898e09669184173a89c72605f34ea6');
 
 ethereum.getInstructor((error, result) => {
   if (!error) {
